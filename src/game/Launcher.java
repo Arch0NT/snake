@@ -19,16 +19,25 @@ public class Launcher {
         Point rightLowerConner = new Point (terminal,150,40,'+');
         Point rightUpperConner = new Point (terminal,150,0,'+');
         
-        Line upperLine = new Line(leftUpperConner, 150, '>');
-        Line leftLine = new Line(leftLowerConner, 40, '^');
-        Line rightLine = new Line(rightUpperConner, 40, 'v');
-        Line lowerLine = new Line(rightLowerConner, 150, '<');
+        Line upperLine = new Line(leftUpperConner, 150, Direction.RIGHT );
+        Line leftLine = new Line(leftLowerConner, 40, Direction.UP );
+        Line rightLine = new Line(rightUpperConner, 40, Direction.DOWN);
+        Line lowerLine = new Line(rightLowerConner, 150, Direction.LEFT);
         upperLine.Draw();
         leftLine.Draw();
         lowerLine.Draw();
         rightLine.Draw();
         
-        do {	
+        Point test = new Point (terminal,5,5,'*');
+        do {
+        	test.Move(1, Direction.RIGHT);
+        	test.Draw();
+        	try {
+				Thread.currentThread().sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
         }
         while (terminal.pollInput()==null);
         
