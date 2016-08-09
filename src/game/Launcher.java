@@ -10,8 +10,8 @@ public class Launcher {
 
 	public static void main(String[] args) throws IOException {
 		
-		Terminal terminal = new DefaultTerminalFactory().setInitialTerminalSize(new TerminalSize(150,40)).createTerminal();
-		terminal.enterPrivateMode();
+		Terminal terminal = new DefaultTerminalFactory().setInitialTerminalSize(new TerminalSize(152,42)).createTerminal();
+		//terminal.enterPrivateMode();
 		terminal.setCursorVisible(false);
         terminal.flush();
         Point leftUpperConner = new Point (terminal,0,0,'+');
@@ -30,18 +30,13 @@ public class Launcher {
         
         Point test = new Point (terminal,5,5,'*');
         do {
-        	test.Move(1, Direction.RIGHT);
         	test.Draw();
-        	try {
-				Thread.currentThread().sleep(1000);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+        	test.Move(1, Direction.RIGHT);
+        //	for (long i=0; i<=150000;i++);
         }
         while (terminal.pollInput()==null);
         
-        terminal.exitPrivateMode();
+        //terminal.exitPrivateMode();
         System.exit(0);
 	}
 

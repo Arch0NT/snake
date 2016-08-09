@@ -27,6 +27,11 @@ public class Point {
 		sym=p.sym;
 	}
 	
+	public void Draw () throws IOException {
+		terminal.setCursorPosition(x, y);
+		terminal.putCharacter(sym);
+	}
+	
 	public void Move (int offset, Direction direction){
 		switch (direction){
 		case DOWN : y+=offset;
@@ -41,10 +46,5 @@ public class Point {
 				  }
 				  break;
 		}
-	}
-
-	public void Draw () throws IOException {
-		terminal.setCursorPosition(x, y);
-		terminal.putCharacter(sym);
 	}
 }
